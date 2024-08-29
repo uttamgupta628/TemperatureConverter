@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>temperature</title>
+    <style>
+        body{
+            padding: 50px,100px ;
+        }
+        h1{
+            text-align: center;
+        }
+        #container{
+            text-align: center;
+            background-color: rgba(96, 128, 0, 0.456);
+            padding: 50px;
+        }
+        .div-input{
+            display: inline-block;
+        }
+        input{
+            padding: 5px,5px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            width: 250px;
+            text-align: center;
+        }
+        label{
+            font-size: 20px;
+        }
+        #box{
+            text-align: center;
+            background-color: rgba(128, 43, 0, 0.456);
+            padding: 50px;
+        }
+        #box1{
+            text-align: center;
+            background-color: rgba(0, 117, 128, 0.797);
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="container">
+        <label >Celsius</label>
+        <div class="div-input"><input type="number" value="0" id="cel" class="input">
+        </div>
+        <label >Fahrenheit</label>
+        <div class="div-input"><input type="number" value="32" id="fer" class="input">
+        </div>
+    </div>
+    <div id="box">
+        <label >Celsius</label>
+        <div class="div-input"><input type="number" value="0" id="ce" class="input">
+        </div>
+        <label >Kelvin</label>
+        <div class="div-input"><input type="number" value="273.15" id="kel" class="input">
+        </div>
+    </div>
+    <div id="box1">
+        <label >Fahrenheit</label>
+        <div class="div-input"><input type="number" value="32" id="f" class="input">
+        </div>
+        <label >Kelvin</label>
+        <div class="div-input"><input type="number" value="273.15" id="k" class="input">
+        </div>
+    </div>
+    <script>
+        var cel=document.getElementById("cel");
+        var fer=document.getElementById("fer");
+        var kel=document.getElementById("kel");
+        var ce=document.getElementById("ce");
+        var fera=document.getElementById("f");
+        var kelv=document.getElementById("k");
+        cel.addEventListener('input',function(){
+            let c=this.value;
+            let f=(c * 9/5)+32;
+            if(!Number.isInteger(f)){
+                f=f.toFixed(4);
+            }
+            fer.value=f;
+        });
+        fer.addEventListener('input',function(){
+            let f=this.value;
+            let c=(f-32)*5/9;
+            if(!Number.isInteger(c)){
+                c=c.toFixed(4);
+            }
+            cel.value=c;
+        });
+        kel.addEventListener('input',function(){
+            let k=this.value;
+            let c=k-273.15;
+            ce.value=c;
+        });
+        ce.addEventListener('input',function(){
+            let kc=this.value;
+            let k=kc+273.15;
+            kel.value=kc;
+        });
+        fera.addEventListener('input',function(){
+            let f=this.value;
+            let k=(f - 32) * 5/9 + 273.15;
+            if(!Number.isInteger(k)){
+                k=k.toFixed(4);
+            }
+            kelv.value=k;
+        });
+        kelv.addEventListener('input',function(){
+            let k=this.value;
+            let f=(k - 273.15) * 9/5 + 32;
+            if(!Number.isInteger(f)){
+                f=f.toFixed(4);
+            }
+            fera.value=f;
+        });
+    </script>
+</body>
+</html>
